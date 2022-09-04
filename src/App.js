@@ -1,23 +1,25 @@
+import * as React from 'react';
 import logo from './logo.svg';
+import './tools/tool';
 import './App.css';
 
 function App() {
+  const [uuid, setUuid] = React.useState('');
+  React.useEffect(() => {
+    const uuid = sessionStorage.getItem('uuid');
+    console.log('uuid===>', uuid);
+    setUuid(uuid);
+  }, []);
+
+  const onClick = React.useCallback(() => {
+    const uuid = sessionStorage.getItem('uuid');
+    console.log('uuid===>', uuid);
+    setUuid(uuid);
+  }, [setUuid]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={onClick}>获取UUID</button>
+      <span>{uuid}</span>
     </div>
   );
 }
