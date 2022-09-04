@@ -11,4 +11,6 @@ body.addEventListener(
 );
 body.innerHTML = 'I am native js';
 
-container.appendChild(body);
+const wrapper = document.createElement('div');
+wrapper.appendChild(body);
+container.appendChild(wrapper);

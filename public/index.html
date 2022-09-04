@@ -25,6 +25,41 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <!-- <script>
+      const interceptEvent = ['click', 'dbclick'];
+      if (window.addEventListener) {
+        const old = EventTarget.prototype.addEventListener;
+        //   intercept
+        EventTarget.prototype.addEventListener = function (
+          event,
+          handler,
+          options
+        ) {
+          let fn = handler;
+          if (typeof handler !== 'function') {
+            throw new Error('callback is not function');
+          }
+          if (interceptEvent.includes(event)) {
+            fn = function (...args) {
+              // 自定义函数
+              // const uuid = uuidv4();
+              sessionStorage.setItem('uuid', 'uuid');
+              console.log(`触发了${event}, uuid=`, event);
+              handler(...args);
+            };
+          }
+          let config = {};
+          if (typeof options === 'boolean') {
+            config.capture = options;
+          } else if (Object.prototype.toString(options) === '[object Object]') {
+            config = { ...options };
+          }
+          old(event, fn, {
+            capture: true
+          });
+        };
+      }
+    </script> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
