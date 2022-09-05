@@ -1,5 +1,6 @@
 import * as React from 'react';
 import logo from './logo.svg';
+import { network } from './tools/network';
 import './App.css';
 
 // function App() {
@@ -43,6 +44,7 @@ class MyApp extends React.Component {
     this.setState({
       uuid
     });
+    network.get('/api/list');
     setTimeout(() => {
       console.log('click get uuid======>', this.state.uuid);
     }, 3000);
