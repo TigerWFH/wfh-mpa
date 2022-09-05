@@ -1,4 +1,4 @@
-import './tools/tool';
+import './tools/toolsv2';
 import { network } from './tools/network';
 const container = document.getElementById('root');
 

@@ -16,7 +16,8 @@ if (window.addEventListener) {
         // 自定义函数
         const uuid = uuidv4();
         sessionStorage.setItem('uuid', uuid);
-        handler(...args);
+        handler.yanpin = fn;
+        handler.call(this, ...args);
         console.log(`触发了${event}, uuid=`, uuid, event);
       };
     }
@@ -41,6 +42,6 @@ if (window.addEventListener) {
   ) {
     const fn = mm.get(handler);
     console.log('remove=====>', mm.size);
-    nativeRemoveEventLisener(event, fn, options);
+    nativeRemoveEventLisener(event, handler.yanpin, options);
   };
 }
