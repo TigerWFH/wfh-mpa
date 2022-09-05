@@ -27,7 +27,6 @@ if (window.addEventListener) {
       config = { ...options };
     }
     mm.set(handler, fn);
-    console.log('fn======>', mm.size);
     nativeAddEventListener(event, fn, {
       capture: false
     });
