@@ -1,8 +1,9 @@
 # wfh-mpa 应用
 
-## create-react-app
+- `异步请求情况下，反复点击按钮，会导致同一次的actionId不一致`
+- `忽略了捕获阶段的场景，如果保留捕获阶段的场景，导致问题也是异步场景下网络行为的actionId可能不一致`
 
-###
+## create-react-app
 
 ### config/paths.js
 
