@@ -45,9 +45,14 @@ class MyApp extends React.Component {
       uuid
     });
     network.get('/api/list');
-    setTimeout(() => {
-      console.log('click get uuid======>', this.state.uuid);
-    }, 3000);
+    console.log('click get uuid======>', this.state.uuid);
+    // setTimeout(() => {
+    //   console.log('click get uuid======>', this.state.uuid);
+    // }, 3000);
+  };
+
+  onCapture = () => {
+    console.log('capture');
   };
 
   render() {
