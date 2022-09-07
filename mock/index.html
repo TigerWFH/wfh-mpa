@@ -62,29 +62,71 @@
   </head>
   <body>
     <button id="btn">测试</button>
+    <button id="btn2">异步测试</button>
     <script>
-      window.onload = function () {
-        function reWriteEventListener() {
-          if (window._EventListener) {
-            return new window._EventListener(function (event, listener) {
-              const { type } = event;
-              console.log('在事件触发之前先捕捉');
-              console.log(type, event, listener);
-            });
-          }
-        }
+      // 参考资料：https://www.zhihu.com/question/62305365
+      document.querySelector('#btn2').addEventListener('click', () => {
+        console.log('click2');
+        let uuid = 123;
+        setTimeout(() => {
+          console.log('setTimeout');
+          uuid = 0;
+        });
+        const p0 = new Promise((resolve, reject) => {
+          resolve(123);
+        });
+        p0.then((res) => {
+          console.log('p0-then');
+        });
+        const p = new Promise((resolve, reject) => {
+          const http = new XMLHttpRequest();
+          http.open('get', '/api/list');
+          http.onerror = function (err) {
+            console.log('err');
+            reject(err);
+          };
+          http.onload = function (res) {
+            console.log('resolve');
+            resolve(res);
+          };
+          http.onloadend = function (info) {
+            console.log('info');
+            resolve(info);
+          };
+          http.send(null);
+        });
+        p.then((res) => {
+          console.log('first-then=====>', res);
+        }).catch((err) => {
+          console.log('first-catch======>', err);
+        });
+      });
+      // document.querySelector('#btn2').addEventListener('click', () => {
+      //   console.log('click');
+      //   const uuid = 123;
+      // });
+      // window.onload = function () {
+      //   function reWriteEventListener() {
+      //     if (window._EventListener) {
+      //       return new window._EventListener(function (event, listener) {
+      //         const { type } = event;
+      //         console.log('在事件触发之前先捕捉');
+      //         console.log(type, event, listener);
+      //       });
+      //     }
+      //   }
 
-        reWriteEventListener();
-        const btn = document.querySelector('#btn');
-        const handler = function (e) {
-          console.log('注册click回调', e);
-          setTimeout(() => {
-            console.log('开始移除监听器');
-            btn.removeEventListener('click', handler);
-          }, 200);
-        };
-        btn.addEventListener('click', handler);
-      };
+      //   reWriteEventListener();
+      //   const btn = document.querySelector('#btn');
+      //   const handler = function (e) {
+      //     console.log('注册click回调', e);
+      //     setTimeout(() => {
+      //       console.log('开始移除监听器');
+      //       btn.removeEventListener('click', handler);
+      //     }, 200);
+      //   };
+      //   btn.addEventListener('click', handler);
+      // };
     </script>
   </body>
 </html>
