@@ -55,9 +55,31 @@ class MyApp extends React.Component {
     console.log('capture');
   };
 
+  onDragStart = (event) => {
+    console.log('dragstart===>', event);
+  };
+
+  onDragOver = (event) => {
+    console.log('dragover===>', event);
+    event.preventDefault();
+  };
+
+  onDrop = (event) => {
+    console.log('drop===>', event);
+  };
+
   render() {
     return (
-      <div className="App">
+      <div className="App" onDrop={this.onDrop}>
+        <div draggable={true} onDragStart={this.onDragStart}>
+          拖拽
+        </div>
+        <div
+          onDrop={this.onDrop}
+          onDragOver={this.onDragOver}
+          style={{ width: '200px', height: '200px', border: '1px solid red' }}>
+          Drop Zone
+        </div>
         <button onClick={this.onClick}>获取UUID</button>
         <span>{this.state.uuid}</span>
       </div>
