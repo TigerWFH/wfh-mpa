@@ -66,6 +66,26 @@
 
 > Reflect 主要是配合 Proxy 配对使用，提供对象语义的默认行为
 
+- `JS中的对象和非对象（primitive value）`
+  - `primitive value：`null, undefined, number, string, boolean, symbol
+- `对象语义：`
+  - `get/set：`即 o.x 和 o.x=xxx
+  - `Apply：`即 o(...args)
+  - `Constructor：`即 new o(...args)
+  - `delete：`删除属性
+  - `Object.defineProperty：`定义属性
+    > 有一些看上去是基本语义的，实际是由多个基本语义复合而成。
+    ***
+    > 例如 o.method(...args)，在 JS 中由 f=Get(o, 'method')和 Apply(f, o, args)复合而成
+    ***
+    > k in o 对应的基本语义是 Has
+    ***
+    > for k in o 确是由 OweKeys、GetPrototypeOf、GetOwnPropertyDescriptor 复合而成
+- `所有对象基本语义`即构成`对象模型`
+  > Proxy 可以完全地实现对象的`所有基本语义`，每个基本语义在 proxy handler 都有对应的 trap，并且在 Reflect 对象上也有对应的方法方便实现默认行为，所以 Reflect 和 Proxy 是对称的。`注意：`Proxy 和 Reflect 覆盖所有基本语义，但不管那些复合语义
+  >
+  > [参考资料](https://www.zhihu.com/question/426875859)
+
 ```javascript
 let p = new Proxy(x, {
   // 第一种写法：将操作透明的转发给被代理的对象上
@@ -92,7 +112,7 @@ let p = new Proxy(x, {
 >
 > [Proxy 代理 Map](https://www.zhihu.com/question/426875859)
 
-- `Proxy(targey, handler)：`用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找，赋值，枚举，函数调用等等）。proxy 捕获对其`目标对象`的调用和操作
+- `Proxy(targey, handler)：`用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找，赋值，枚举，函数调用等等）。`Proxy设计目标是代理一个对象的所有基本语义，以允许构建membrane(膜)`
 
   > - `target：`要使用 Proxy 包装的目标对象（可以是任何类型的对象，包括原生数组、函数、代理）
   > - `handler：`以函数作为属性的对象，各属性中的函数分别定义了在执行各种操作时代理 p 的行为。handler 对象是一个容纳一批特定属性的占位符对象。它包含有 Proxy 的各个捕获器（trap）
