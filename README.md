@@ -62,6 +62,61 @@
 
 - `window.getSelection()返回Selection实例`
 
+### JavaScript APIs
+
+> Reflect 主要是配合 Proxy 配对使用，提供对象语义的默认行为
+
+```javascript
+let p = new Proxy(x, {
+  // 第一种写法：将操作透明的转发给被代理的对象上
+  set(...args) {
+    console.log('set===>', args);
+
+    return Reflect.set(...args);
+  },
+  /* 
+    第二种写法：当你知道某种操作实现时，手动实现操作
+    我们知道get/set的语法，所以可以这样写；
+    oweKeys()的语法不知道，该怎么写呢？但是Reflect.oweKeys()可以将操作转发到对应的对象上。
+    所以Proxy的trap都在Reflect上有一一对应的实现
+    */
+  set(target, key, value) {
+    console.log('set===>', target, key, value);
+    target[key] = value;
+  }
+  //
+});
+```
+
+> [Reflect 作用](https://www.zhihu.com/question/460133198)
+>
+> [Proxy 代理 Map](https://www.zhihu.com/question/426875859)
+
+- `Proxy(targey, handler)：`用于创建一个对象的代理，从而实现基本操作的拦截和自定义（如属性查找，赋值，枚举，函数调用等等）。proxy 捕获对其`目标对象`的调用和操作
+
+  > - `target：`要使用 Proxy 包装的目标对象（可以是任何类型的对象，包括原生数组、函数、代理）
+  > - `handler：`以函数作为属性的对象，各属性中的函数分别定义了在执行各种操作时代理 p 的行为。handler 对象是一个容纳一批特定属性的占位符对象。它包含有 Proxy 的各个捕获器（trap）
+  >   - `handler.getPrototypeOf(target)`
+  >   - `handler.setPrototypeOf(target, prototype)`
+  >   - `handler.defineProperty(target, property, descriptor)`
+  >   - `handler.has(target, props)`in 操作符的捕捉器
+  >   - `handler.get(target, property, receiver)`属性读取操作的捕捉器
+  >   - `handler.set(target, property, value, receiver)`属性设置操作的捕捉器
+  >   - `handler.deleteProperty(target, property)`delete 操作符的捕捉器
+  >   - `handler.ownKeys(target)`
+  >   - `handler.apply(target, thisArg, argumentsList)`函数调用操作的捕捉器
+  >   - `handler.constructor(target, argumentsList, newTarget)`new 操作符的捕捉器
+
+- `Reflect`它提供拦截 JavaScript `操作`的方法。这些方法与 proxy handlers 的方法相同。Reflect 的所有属性和方法都是静态的，就像 Math 对象一样
+
+  > - `Reflect.apply(target, thisArgument, argumentsList)`
+  > - `Reflect.constructor(target, argumentsList[,newTarget])`
+  > - `Reflect.defineProperty(target, propertyKey, attributes)`
+  > - `Reflect.deleteProperty(target, property)`
+  > - `Reflect.get(target, propertyKey[,receiver])`
+  > - `Reflect.set(target, propertyKey, value[,receiver])`
+  > - `Reflect.has(target, propertyKey)`
+
 ## create-react-app
 
 ### config/paths.js
