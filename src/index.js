@@ -6,6 +6,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.addEventListener(
+  'focusout',
+  function (event) {
+    console.log('event======>', event.target, event.currentTarget, event);
+    if (event.target && event.target.placeholder) {
+      console.log('placeholder====>', event.target.placeholder);
+    }
+  },
+  false
+);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>

@@ -68,6 +68,10 @@ class MyApp extends React.Component {
     console.log('drop===>', event);
   };
 
+  onBlur = () => {
+    console.log('失去焦点');
+  };
+
   render() {
     return (
       <div className="App" onDrop={this.onDrop}>
@@ -82,6 +86,9 @@ class MyApp extends React.Component {
         </div>
         <button onClick={this.onClick}>获取UUID</button>
         <span>{this.state.uuid}</span>
+        <form>
+          <input placeholder="请输入内容" onBlur={this.onBlur} />
+        </form>
       </div>
     );
   }
