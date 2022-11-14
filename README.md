@@ -26,9 +26,21 @@
 
 ### FocusEvent
 
+> 提供了 focus, blur, focusin, focusout 等事件
+>
 > `Document.activeElement`的值随浏览器不同而不同（BUG）
 
-- `触发对象：`Window、Element
+- `触发对象：`Window(MDN 没有，W3C 规范上有，实测 chrome、safari 支持),Element
+
+### ClipboardEvent
+
+> 提供了 cut, copy, paste 事件
+>
+> `HTMLElement.contentEditable：` 该属性用于表明元素是否是可编辑
+>
+> [Clipboard 规范](https://www.w3.org/TR/clipboard-apis/#the-copy-action)
+
+- `触发对象：`Window(实测 chrome、safari 支持), Element(获得焦点的元素)或者 body
 
 ## create-react-app
 
