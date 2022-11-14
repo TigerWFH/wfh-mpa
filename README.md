@@ -11,6 +11,25 @@
     */
 ```
 
+## web
+
+- `HTML5焦点管理`
+  > TV web 交互方式和 web 传统方式不一样，TV 通过遥控器进行交互，它有点击、移动、返回、主页等操作。`移动`本质则是焦点切换
+  ***
+  > `tabindex属性：`[HTML5 规范](https://html.spec.whatwg.org/multipage/interaction.html#focus)，属性 tabindex 定义了元素是否可以聚焦。如果 tabindex=0，则当前元素允许聚焦。
+  >
+  > tabindex 取值：值域={正整数,0,负整数}，负整数无法使用 tab 切换
+  ***
+  > `导航顺序：`使用 tab 键进行焦点切换的顺序
+  >
+  > [HTML 聚焦参考资料](https://zhuanlan.zhihu.com/p/73992526)
+
+### FocusEvent
+
+> `Document.activeElement`的值随浏览器不同而不同（BUG）
+
+- `触发对象：`Window、Element
+
 ## create-react-app
 
 ### config/paths.js
