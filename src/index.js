@@ -9,13 +9,25 @@ import reportWebVitals from './reportWebVitals';
 window.addEventListener(
   'focusout',
   function (event) {
-    console.log('event======>', event.target, event.currentTarget, event);
+    console.log(
+      'focusout------event======>',
+      event.target,
+      event.currentTarget,
+      event
+    );
     if (event.target && event.target.placeholder) {
       console.log('placeholder====>', event.target.placeholder);
     }
   },
   false
 );
+
+window.addEventListener('copy', function (event) {
+  // 可以通过event.clipboardData.setData(format, data)设置剪切板数据
+  // 无法读取系统剪切板，只能通过selection获取
+  const selection = document.getSelection();
+  console.log('copy------event======>', event, selection.toString());
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
