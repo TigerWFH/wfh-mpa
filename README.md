@@ -42,6 +42,26 @@
 
 - `触发对象：`Window(实测 chrome、safari 支持), Element(获得焦点的元素)或者 body
 
+### Web APIs
+
+- `Selection：`表示用户选择的文本范围或插入符号的当前位置，代表页面中的文本选取，可能横跨多个元素
+
+  > - anchorNode：选取起点所在节点
+  > - anchorOffset：选取起点在 anchorNode 中的位置偏移量
+  > - focusNode：
+  > - focusOffset：
+  > - isCollapsed：表示选区被压缩至一点，即光标位置
+  > - rangeCount：返回选区所包含的连续范围的数量
+  > - 方法：
+  > - getRangeAt()
+  > - collapse()
+  > - extend()
+  > - modify()
+  > - toString()
+  > - [更多资料](https://developer.mozilla.org/zh-CN/docs/Web/API/Selection)
+
+- `window.getSelection()返回Selection实例`
+
 ## create-react-app
 
 ### config/paths.js
