@@ -1,10 +1,11 @@
 import './tools/tool';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import MyApp from './pages/Home';
 
 window.addEventListener(
   'focusout',
@@ -32,7 +33,11 @@ window.addEventListener('copy', function (event) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <App />
+  <HashRouter>
+    <Routes>
+      <Route path="/" element={<MyApp />}></Route>
+    </Routes>
+  </HashRouter>
   // </React.StrictMode>
 );
 

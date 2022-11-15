@@ -1,28 +1,7 @@
 import * as React from 'react';
 import logo from './logo.svg';
-import { network } from './tools/network';
-import './App.css';
-
-// function App() {
-//   const [uuid, setUuid] = React.useState('');
-//   React.useEffect(() => {
-//     const uuid = sessionStorage.getItem('uuid');
-//     console.log('uuid===>', uuid);
-//     setUuid(uuid);
-//   }, [setUuid]);
-
-//   const onClick = React.useCallback(() => {
-//     const uuid = sessionStorage.getItem('uuid');
-//     console.log('uuid===>', uuid);
-//     setUuid(uuid);
-//   }, [setUuid]);
-//   return (
-//     <div className="App">
-//       <button onClick={onClick}>获取UUID</button>
-//       <span>{uuid}</span>
-//     </div>
-//   );
-// }
+import { network } from '../../tools/network';
+import './index.css';
 
 class MyApp extends React.Component {
   constructor(props) {
