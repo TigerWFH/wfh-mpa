@@ -156,3 +156,14 @@ let p = new Proxy(x, {
 ### addeventlistener 问题
 
 > https://ost.51cto.com/posts/33
+
+### hashchange 问题
+
+- `history.pushState(state, title[,url])`
+
+  - `state：`状态
+  - `title：`暂时忽略
+  - `url：`浏览器不会再调用 pushState 时加载该 url，但是重启浏览器时会重新加载，但要保持同源
+
+    [hashchange](https://github.com/remix-run/react-router/issues/6543)
+    [history.pushState](https://github.com/remix-run/react-router/issues/5809)

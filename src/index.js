@@ -14,7 +14,12 @@ import reportWebVitals from './reportWebVitals';
 
 import MyApp from './pages/Home';
 import About from './pages/About';
-
+window.addEventListener('hashchange', function (e) {
+  console.log('hashchange===>', e);
+});
+window.addEventListener('popstate', function (e) {
+  console.log('popstate======>', e);
+});
 window.addEventListener(
   'focusout',
   function (event) {
