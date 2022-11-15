@@ -24,42 +24,20 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-    <!-- <script>
-      const interceptEvent = ['click', 'dbclick'];
-      if (window.addEventListener) {
-        const old = EventTarget.prototype.addEventListener;
-        //   intercept
-        EventTarget.prototype.addEventListener = function (
-          event,
-          handler,
-          options
-        ) {
-          let fn = handler;
-          if (typeof handler !== 'function') {
-            throw new Error('callback is not function');
-          }
-          if (interceptEvent.includes(event)) {
-            fn = function (...args) {
-              // 自定义函数
-              // const uuid = uuidv4();
-              sessionStorage.setItem('uuid', 'uuid');
-              console.log(`触发了${event}, uuid=`, event);
-              handler(...args);
-            };
-          }
-          let config = {};
-          if (typeof options === 'boolean') {
-            config.capture = options;
-          } else if (Object.prototype.toString(options) === '[object Object]') {
-            config = { ...options };
-          }
-          old(event, fn, {
-            capture: true
-          });
-        };
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid red;
       }
-    </script> -->
+      .span {
+        display: inline-block;
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+      }
+    </style>
+    <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
