@@ -51,9 +51,15 @@ class MyApp extends React.Component {
     console.log('失去焦点');
   };
 
+  onAbout = () => {
+    const { history } = this.props;
+    history.pushState('/about');
+  };
+
   render() {
     return (
       <div className="App" onDrop={this.onDrop}>
+        <div onClick={this.onAbout}>About</div>
         <div draggable={true} onDragStart={this.onDragStart}>
           拖拽
         </div>

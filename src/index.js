@@ -6,6 +6,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import MyApp from './pages/Home';
+import About from './pages/About';
 
 window.addEventListener(
   'focusout',
@@ -36,6 +37,8 @@ root.render(
   <HashRouter>
     <Routes>
       <Route path="/" element={<MyApp />}></Route>
+      <Route path="/home" element={<MyApp />}></Route>
+      <Route path="/about" element={<About />}></Route>
     </Routes>
   </HashRouter>
   // </React.StrictMode>
