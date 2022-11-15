@@ -1,7 +1,14 @@
 import './tools/tool';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import {
+  HashRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useParams,
+  useLocation
+} from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -32,6 +39,7 @@ window.addEventListener('copy', function (event) {
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   // <React.StrictMode>
   <HashRouter>

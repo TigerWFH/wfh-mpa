@@ -1,5 +1,6 @@
 import * as React from 'react';
 import logo from './logo.svg';
+import withRouter from '../../hoc/withRouter.js';
 import { network } from '../../tools/network';
 import './index.css';
 
@@ -52,8 +53,9 @@ class MyApp extends React.Component {
   };
 
   onAbout = () => {
-    const { history } = this.props;
-    history.pushState('/about');
+    const { router } = this.props;
+    const { navigate } = router;
+    navigate('/about');
   };
 
   render() {
@@ -79,4 +81,4 @@ class MyApp extends React.Component {
   }
 }
 
-export default MyApp;
+export default withRouter(MyApp);
