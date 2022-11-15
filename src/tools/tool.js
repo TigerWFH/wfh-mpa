@@ -2,10 +2,13 @@
 const interceptEvent = ['click', 'dbclick'];
 
 const mm = new Map();
-
 // 拦截XMLHttpRequest
 const nativeOpen = XMLHttpRequest.prototype.open;
 const nativeSend = XMLHttpRequest.prototype.send;
+const nativeRes = Object.getOwnPropertyDescriptor(
+  XMLHttpRequest.prototype,
+  'response'
+);
 XMLHttpRequest.prototype.open = function (...args) {
   const { method, url } = args;
   console.log('请求方法和地址======>', args);
@@ -13,8 +16,26 @@ XMLHttpRequest.prototype.open = function (...args) {
 };
 XMLHttpRequest.prototype.send = function (body) {
   console.log('请求body======>', body);
+  const startTime = Date.now();
+  this.addEventListener('loadend', function () {
+    const endTime = Date.now();
+    console.log('loadend===>', this, startTime, endTime);
+  });
   nativeSend.apply(this, body);
 };
+// Object.defineProperty(XMLHttpRequest.prototype, 'response', {
+//   get: function () {
+//     // let response = nativeRes.get.call(this);
+//     console.log('response===>', response);
+
+//     return response;
+//   },
+//   set: function (str) {
+
+//     return nativeRes.set.call(this, str);
+//   },
+//   configurable: true
+// });
 
 if (window.addEventListener) {
   const nativeAddEventListener = EventTarget.prototype.addEventListener;
