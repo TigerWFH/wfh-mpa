@@ -5,7 +5,7 @@ import { network } from '../../tools/network';
 function About(props) {
   const navigate = useNavigate();
   function onHome() {
-    navigate('/home');
+    navigate('/');
   }
   return (
     <div className="App">

@@ -41,7 +41,7 @@ if (window.addEventListener) {
   const nativeAddEventListener = EventTarget.prototype.addEventListener;
   //   intercept
   EventTarget.prototype.addEventListener = function (event, handler, options) {
-    console.log('add========>', event, handler, options, this);
+    // console.log('add========>', event, handler, options, this);
     let fn = null;
     if (typeof handler !== 'function') {
       throw new Error('callback is not function');

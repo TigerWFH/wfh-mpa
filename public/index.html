@@ -38,6 +38,26 @@
       }
     </style>
     <title>React App</title>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded');
+      });
+      window.addEventListener('load', function () {
+        console.log('load');
+      });
+      window.addEventListener('beforeunload', function () {
+        console.log('beforeunload');
+      });
+      window.addEventListener('unload', function () {
+        console.log('unload');
+      });
+      window.addEventListener('pageshow', function () {
+        console.log('pageshow');
+      });
+      window.addEventListener('pagehide', function () {
+        console.log('pagehide');
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

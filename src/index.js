@@ -45,7 +45,6 @@ root.render(
   <HashRouter>
     <Routes>
       <Route path="/" element={<MyApp />}></Route>
-      <Route path="/home" element={<MyApp />}></Route>
       <Route path="/about" element={<About />}></Route>
     </Routes>
   </HashRouter>

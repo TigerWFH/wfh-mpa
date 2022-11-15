@@ -14,7 +14,7 @@ function getName() {
 
 body0.addEventListener('click', getName, false);
 body0.addEventListener('click', getName, false);
-body0.innerHTML = 'I am native js';
+body0.innerHTML = 'I am native js<a href=http://localhost:3000/>home</a>';
 
 const wrapper = document.createElement('div');
 wrapper.className = 'container';
