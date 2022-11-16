@@ -39,29 +39,47 @@
     </style>
     <title>React App</title>
     <script>
-      window.addEventListener('DOMContentLoaded', function () {
-        console.log('DOMContentLoaded');
+      /*
+      event.target：事件触发元素，固定不便
+      event.currentTarget：事件处理元素，随处理对象的变化而变化
+      document上不存在beforeUnload、pagehide、unload、pageshow、load等事件
+      window和document：都可以挂DOMContentLoaded
+      */
+      // window.onbeforeunload = function (e) {
+      //   return '';
+      // };
+      document.addEventListener('DOMContentLoaded', function (event) {
+        console.log('DOMContentLoaded=====>', event, event.currentTarget);
       });
-      window.addEventListener('load', function () {
-        console.log('load');
+      window.addEventListener('load', function (event) {
+        console.log('load====>', event);
       });
-      window.addEventListener('beforeunload', function () {
-        console.log('beforeunload');
+      window.addEventListener('beforeunload', function (event) {
+        console.log('beforeunload======>', event);
+        // 无法阻止关闭，但是window.onbeforeunload可以阻止
+        return 'demo';
       });
-      window.addEventListener('unload', function () {
-        console.log('unload');
+      window.addEventListener('unload', function (event) {
+        console.log('unload======>', event);
       });
-      window.addEventListener('pageshow', function () {
-        console.log('pageshow');
+      window.addEventListener('pageshow', function (event) {
+        console.log('pageshow======>', event);
       });
-      window.addEventListener('pagehide', function () {
-        console.log('pagehide');
+      window.addEventListener('pagehide', function (event) {
+        console.log('pagehide======>', event);
       });
+      function loadImage() {
+        console.log('image===>', arguments);
+      }
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <img
+      src="https://www.baidu.com/img/flexible/logo/pc/result.png"
+      onload="loadImage()"
+    />
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

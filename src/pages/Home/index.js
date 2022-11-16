@@ -58,10 +58,18 @@ class MyApp extends React.Component {
     navigate('/about');
   };
 
+  //   浏览器前进回退操作，触发hashchange和popState
+  //   直接修改地址栏hash，触发hashchange和popState
+  //   修改路径不会触发hashchange和popstate
+  
+
   render() {
     return (
       <div className="App" onDrop={this.onDrop}>
         <div onClick={this.onAbout}>About</div>
+        <div onClick={this.onHash}>location.hash</div>
+        <div onClick={this.onHref}>location.href</div>
+        <div onClick={this.onReplace}>location.replace</div>
         <div draggable={true} onDragStart={this.onDragStart}>
           拖拽
         </div>
