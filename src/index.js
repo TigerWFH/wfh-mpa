@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  HashRouter,
+  BrowserRouter,
   Routes,
   Route,
   useNavigate,
@@ -18,7 +18,7 @@ window.addEventListener('hashchange', function (e) {
   console.log('hashchange===>', e);
 });
 window.addEventListener('popstate', function (e) {
-  console.log('popstate======>', e);
+  console.log('popstate======>', e, window.location.href);
 });
 window.addEventListener(
   'focusout',
@@ -47,12 +47,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // <React.StrictMode>
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<MyApp />}></Route>
       <Route path="/about" element={<About />}></Route>
     </Routes>
-  </HashRouter>
+  </BrowserRouter>
   // </React.StrictMode>
 );
 
